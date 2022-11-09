@@ -5,8 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verificador de idade</title>
+    <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
-    
+    <header>
+        <h1 style="text-shadow: 3px 3px 3px black;">Verificador de idade</h1>
+    </header>
+
+    <section>
+        <p>Ano de Nascimento:
+            <input type="number" name="txtano" id="txtano" placeholder="Ex:1996">
+            
+        </p>
+        <p>Sexo:
+            <input type="radio" name="radsex" id="mas" checked>
+            <label for="mas">Masculino</label>
+            <input type="radio" name="radsex" id="fem">
+            <label for="fem">Feminino</label>
+        </p>
+        <p>
+            <input type="button" value="Caucular" style="box-shadow: 1px 1px 2px black; " onclick="enviar()">
+        </p>
+        <p id="mensagem">Preencha o formulario acima para ver o resultado!</p>
+        <img src="https://th.bing.com/th/id/R.d39d8e7c2cddb62a01e9986c7bd966c2?rik=BzY0GBkpb650uQ&riu=http%3a%2f%2fwww.zarorevestimentos.com.br%2fwp-content%2fuploads%2f2019%2f08%2fBRANCO-62X62-61X61-1.jpg&ehk=XOKCj7e07IZi9A2KB2No39XAI05agIFZTiaVMGTl7wo%3d&risl=&pid=ImgRaw&r=0" alt="Imagem ilustrativa" id="imagem" >
+    </section>
+
+    <footer>
+        &copy;Konaly
+    </footer>
+
+    <script src="index.js"></script>
 </body>
 </html>
