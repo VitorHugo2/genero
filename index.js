@@ -1,6 +1,6 @@
 let imgs = {
     
-    "criança":{
+    "crianca":{
         "m":["https://uploads.metropoles.com/wp-content/uploads/2019/01/25195050/iStock-521262996.jpg","https://th.bing.com/th/id/R.40aaecd1751b6fab3b59ebe7fe5aeccd?rik=US%2b570jruFpsCw&riu=http%3a%2f%2felfredadalby.com%2fwp-content%2fuploads%2f2016%2f06%2f02-11604-post%2fJ6A0065(pp_w768_h512).jpg&ehk=SIAqaGudOKMWCsLA31xTfmWGmMTDbRgQU88AmkS6nYk%3d&risl=&pid=ImgRaw&r=0","https://th.bing.com/th/id/R.f07f0e2b2f83530435e95ebe05c3ec1e?rik=2i%2fGvnzPw7%2bScg&riu=http%3a%2f%2ffunds.gfmcdn.com%2f6881269_1447352117.1797.jpg&ehk=ukH2O9vNRB5h6WCPi%2b%2fNBqzUbAGWO%2b9RlncPHM8pYP8%3d&risl=&pid=ImgRaw&r=0",],
         "f":["https://th.bing.com/th/id/OIP.sRsYdroTi0EEDuuxn-n23QAAAA?pid=ImgDet&w=400&h=266&rs=1","https://th.bing.com/th/id/R.2767dd684da38360fa62756e05ec3044?rik=V59VJ4dMR9Rv%2fg&riu=http%3a%2f%2fwww.beautifulblackhairandskin.com%2fwp-content%2fuploads%2f2015%2f06%2fKidsAfroPuffs10.jpg&ehk=0%2bQThCyc88fG%2bGlQBlJmRmiy3etJ0Ar9iILnXUSarn4%3d&risl=&pid=ImgRaw&r=0","https://i0.wp.com/www.geledes.org.br/wp-content/uploads/2016/10/dia-das-criancas-negras001.jpg?ssl=1",],
         "gn":["https://th.bing.com/th/id/OIP.wJ5v7POT0ucl5ljg6V6cxAHaFj?pid=ImgDet&rs=1","https://cdn.awsli.com.br/800x800/1093/1093976/produto/49851435/94e4979876.jpg","https://th.bing.com/th/id/OIP.VSaWTlLcK2NqlrOpBpPy6AHaHa?pid=ImgDet&rs=1"],
@@ -23,17 +23,106 @@ let imgs = {
     "anciao":{
         "m":["https://midias.agazeta.com.br/2020/08/27/-lancamento-da-pedra-presidente-jair-bolsonaro-no-lancamento-da-pedra-fundamental-para-a-duplicacao-da-br---469-em-foz-do-iguacu-307725-article.jpg","https://images3.memedroid.com/images/UPLOADED73/5e12bd58237a7.jpeg","https://www.folhavitoria.com.br/geral/blogs/portugues-em-dia/wp-content/uploads/2021/07/208.-Anciao.jpg",],
         "f":["https://s2.glbimg.com/rdn8PgwKyQc7spRfZGhc4Rr2pv4=/0x0:312x471/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2020/9/T/DUu3WlQYS6mDzkPZSQyg/teresa.jpg","http://memorialdaresistenciasp.org.br/wp-content/uploads/tainacan-items/3161/50944/DilmaRousseff-scaled.jpg","https://img.freepik.com/fotos-premium/retrato-de-uma-velha-segurando-dinheiro-isolado_246836-889.jpg"],
-        "gn":["",],
+        "gn":["https://avowhcbwko.cloudimg.io/v7/https://empreender.nyc3.digitaloceanspaces.com/grupowhats/30ef5e1803d88ac7d69d04abf9153dee?w=400&org_if_sml=1","https://grupowhats.xyz/wp-content/uploads/2020/06/shuek.jpg","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxDoPuFeU7KLItRsBSpTGrfJlpia3c1fR-z74ltcQYTpXZx3J3QmbK7LFAOknyLU89i1c&usqp=CAU"],
     },
 }
-
+function randomNumber(){
+    return Math.floor(Math.random() * (2 - -1) )
+}
 function enviar(){
-    var imag = document.getElementById("imagem").src
+    var imag = document.getElementById("imagem")
     var mensagem = document.getElementById("mensagem")
     var ano = new Date().getFullYear()
     var fano = document.getElementById("txtano").value
-    if(fano.length <= 0 || fano > ano){
+    var fsex = document.getElementsByName("radsex")
+    var idade = ano - Number(fano)
+    
+    if(fano.length <= 0 || fano > ano || fano <= -1){
         alert("Verifique os campos acima e tente novamente!")
+    } else{
+        if(fsex[0].checked){
+            if(idade < 10){
+                mensagem.innerHTML = `Você é Homem, Criança e tem ${idade} anos de idade`
+                imag.src = imgs.crianca.m[randomNumber()]
+                imag.style.width = "250px"
+                imag.style.height = "250px"
+            }else if(idade >= 10 && idade < 21){
+                mensagem.innerHTML = `Você é Homem, Jovem e tem ${idade} anos de idade`
+                imag.src = imgs.jovem.m[randomNumber()]
+                imag.style.width = "250px"
+                imag.style.height = "250px"
+            }else if(idade >= 21 && idade < 50){
+                mensagem.innerHTML = `Você é Homem, Adulto e tem ${idade} anos de idade`
+                imag.src = imgs.adulto.m[randomNumber()]
+                imag.style.width = "250px"
+                imag.style.height = "250px"
+            }else if(idade >= 50 && idade < 100){
+                mensagem.innerHTML = `Você é Homem, Idoso e tem ${idade} anos de idade`
+                imag.src = imgs.idoso.m[randomNumber()]
+                imag.style.width = "250px"
+                imag.style.height = "250px"
+            }else if(idade >= 100){
+                mensagem.innerHTML = `Você é Homem, Ancião e tem ${idade} anos de idade`
+                imag.src = imgs.anciao.m[randomNumber()]
+                imag.style.width = "250px"
+                imag.style.height = "250px"
+            }
+        }else if(fsex[1].checked){
+            if(idade < 10){
+                mensagem.innerHTML = `Você é Mulher, Criança e tem ${idade} anos de idade`
+                imag.src = imgs.crianca.f[randomNumber()]
+                imag.style.width = "250px"
+                imag.style.height = "250px"
+            }else if(idade >= 10 && idade < 21){
+                mensagem.innerHTML = `Você é Mulher, Jovem e tem ${idade} anos de idade`
+                imag.src = imgs.jovem.f[randomNumber()]
+                imag.style.width = "250px"
+                imag.style.height = "250px"
+            }else if(idade >= 21 && idade < 50){
+                mensagem.innerHTML = `Você é Mulher, Adulta e tem ${idade} anos de idade`
+                imag.src = imgs.adulto.f[randomNumber()]
+                imag.style.width = "250px"
+                imag.style.height = "250px"
+            }else if(idade >= 50 && idade < 100){
+                mensagem.innerHTML = `Você é Mulher, idosa e tem ${idade} anos de idade`
+                imag.src = imgs.idoso.f[randomNumber()]
+                imag.style.width = "250px"
+                imag.style.height = "250px"
+            }else if(idade >= 100){
+                mensagem.innerHTML = `Você é Mulher, Anciã e tem ${idade} anos de idade`
+                imag.src = imgs.anciao.f[randomNumber()]
+                imag.style.width = "250px"
+                imag.style.height = "250px"
+            }
+        }else if(fsex[2].checked){
+            
+            if(idade < 10){
+                mensagem.innerHTML = `Você é ????, Criançe e tem ${idade} anes de idade`
+                imag.src = imgs.crianca.gn[randomNumber()]
+                imag.style.width = "250px"
+                imag.style.height = "250px"
+            }else if(idade >= 10 && idade < 21){
+                mensagem.innerHTML = `Você é ????, Jove e tem ${idade} anes de idade`
+                imag.src = imgs.jovem.gn[randomNumber()]
+                imag.style.width = "250px"
+                imag.style.height = "250px"
+            }else if(idade >= 21 && idade < 50){
+                mensagem.innerHTML = `Você é ????, Adulte e tem ${idade} anes de idade`
+                imag.src = imgs.adulto.gn[randomNumber()]
+                imag.style.width = "250px"
+                imag.style.height = "250px"
+            }else if(idade >= 50 && idade < 100){
+                mensagem.innerHTML = `Você é ????, Idose e tem ${idade} anes de idade`
+                imag.src = imgs.idoso.gn[randomNumber()]
+                imag.style.width = "250px"
+                imag.style.height = "250px"
+            }else if(idade >= 100){
+                mensagem.innerHTML = `Você é ????, Anciem e tem ${idade} anes de idade`
+                imag.src = imgs.anciao.gn[randomNumber()]
+                imag.style.width = "250px"
+                imag.style.height = "250px"
+            }
+        }
     }
     
 }
